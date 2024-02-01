@@ -9,4 +9,4 @@ functions = "functions"
 [[headers]]
 for = "/*"
 [headers.values]
-Access-Control-Allow-Origin = "https://sudo-choices-kunalshah017.vercel.app/Dynamic-Game/index.html"
+Access-Control-Allow-Origin = "*"
