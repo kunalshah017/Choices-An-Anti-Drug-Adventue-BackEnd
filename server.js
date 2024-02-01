@@ -1,7 +1,6 @@
 import express from "express";
 import OpenAI from "openai";
 import cors from "cors";
-
 import dotenv from "dotenv";
 dotenv.config();
 
@@ -12,6 +11,9 @@ const openai = new OpenAI(process.env.OPENAI_API_KEY);
 app.use(express.json());
 app.use(cors());
 
+// Handling preflight requests
+app.options("/api/story", cors());
+
 app.post("/api/story", async (req, res) => {
   try {
     const { userInput } = req.body;
@@ -21,11 +23,7 @@ app.post("/api/story", async (req, res) => {
       model: "gpt-3.5-turbo",
     });
 
-    // console.log("input successfull: ", userInput);
-
     const response = completion.choices[0].message.content;
-
-    // const response = "This is a succesful test response";
 
     res.json({ response });
   } catch (error) {
