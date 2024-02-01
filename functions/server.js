@@ -11,8 +11,7 @@ const openai = new OpenAI(process.env.OPENAI_API_KEY);
 app.use(express.json());
 app.use(
   cors({
-    origin:
-      "https://sudo-choices-kunalshah017.vercel.app/Dynamic-Game/index.html",
+    origin: "*",
     credentials: true,
   })
 );
